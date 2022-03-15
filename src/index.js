@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+/**
+ *  ? Para poder importar un componente debemos llamarlo por el nombre que fue exportado.
+ */
+
+import PrimerComponente from "./App";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    {/* //* Para usar un componente debo tratarlo como si fuera una etiqueta HTML */}
+    <PrimerComponente />
   </React.StrictMode>,
   document.getElementById('root')
 );
