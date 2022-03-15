@@ -1,6 +1,7 @@
 // Paso 1 importar useState from react.
-import {useState} from "react";
-
+import { useState } from "react";
+import Header from "./Header";
+import Footer from "./Footer"
 
 /**
  *  * Como crear un componente desde 0
@@ -40,25 +41,28 @@ const PrimerComponente = () => {
 
   // Vamos a cerar dos funciones una para sumar y otra para restar 
   // Estas dos funciones estan cambiando el estado de la variable count
-  
-  const sumar = () => {
-    setCount(count + 1);
-  }
 
-  const restar = () => {
-    setCount(count -1);
-  }
+  const sumar = () => setCount(count + 1);
 
+  const restar = () => setCount(count -1);
+
+  const parametro = (n1, n2) => setCount(n1 + n2);
 
   return (
     <div>
+      <Header />
       <h1>Hola Mundo</h1>
       <div>
         <h4>Hola Primer Componente {count}</h4>
         {/* vamos a crear dos botones, uno para poder sumar 1 a count y otro para restar */}
         <button onClick={sumar}>Sumar</button>
         <button onClick={restar}>Restar</button>
+        {/* ? Si queremos usar parentesis al momento de llamar a una funcion debemos primero ejecutarla como un callback */}
+        {/* Ademas es la forma en el caso nuestra reciba algun parametro */}
+
+        <button onClick={() => parametro(10, 20)}>Restar</button>
       </div>
+      <Footer />
     </div>
   );
 };
