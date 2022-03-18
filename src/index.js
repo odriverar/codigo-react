@@ -1,20 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+/**
+ *  * Al importar el archivo index.css en index.js
+ *  * esto esta haciendo un import global, es decir que lo puedo usar desde cualquier archivo
+ */
 import './index.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 /**
  *  ? Para poder importar un componente debemos llamarlo por el nombre que fue exportado.
  */
 
-import PrimerComponente from "./App";
+// import PrimerComponente from "./App";
+import Home from "./pages/Home";
 
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* //* Para usar un componente debo tratarlo como si fuera una etiqueta HTML */}
-    <PrimerComponente />
+    {/* <PrimerComponente /> */}
+    <Home/>
   </React.StrictMode>,
   document.getElementById('root')
 );

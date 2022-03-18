@@ -1,12 +1,16 @@
 // Paso 1 importar useState from react.
 import { useState } from "react";
 import Header from "./Header";
-import Footer from "./Footer"
+import Footer from "./Footer";
+import FormRegister from "./Form";
+
+import FormUser from "./FormUser";
 
 /**
  *  * Como crear un componente desde 0
  *  ! Antes import REACT esra obligatorio, pero desde la version 17, esa linea no hace falta
  *  @param import React from "react";
+ * 
  *  * <<<<<<<<<<<<<<<<<<<<<<<<<   >>>>>>>>>>>>>>>>>>>>>>>>>>>
  *  * El primer paso para definir un componente es el nombre.
  *  ? El nombre de un componente, siempre debe iniciar en Mayuscula.
@@ -29,7 +33,7 @@ const PrimerComponente = () => {
    *  ? Para poder definir esta varieble como parte de useState, debemos inicializar el valor de esta variable usando useState
    * 
    *  ! Ojo el valor que va dentro de useState sera el valor inicial de la variable.
-   * 
+   *  ! HOOKS  { const [count, setCount] = useState(0); }
    *  @param 
    */
   const [count, setCount] = useState(0);
@@ -51,17 +55,21 @@ const PrimerComponente = () => {
   return (
     <div>
       <Header />
-      <h1>Hola Mundo</h1>
-      <div>
-        <h4>Hola Primer Componente {count}</h4>
+      {/* <h1>Hola Mundo</h1> */}
+      {/* <div> */}
+        {/* <h4>Hola Primer Componente {count}</h4> */}
         {/* vamos a crear dos botones, uno para poder sumar 1 a count y otro para restar */}
-        <button onClick={sumar}>Sumar</button>
-        <button onClick={restar}>Restar</button>
+        {/* <button onClick={sumar}>Sumar</button> */}
+        {/* <button onClick={restar}>Restar</button> */}
         {/* ? Si queremos usar parentesis al momento de llamar a una funcion debemos primero ejecutarla como un callback */}
         {/* Ademas es la forma en el caso nuestra reciba algun parametro */}
-
-        <button onClick={() => parametro(10, 20)}>Restar</button>
-      </div>
+        
+        {/* <button onClick={() => parametro(10, 20)}>Restar</button> */}
+      {/* </div> */}
+      {/* <hr /> */}
+      <hr />
+      {/* <FormRegister/> */}
+      <FormUser />
       <Footer />
     </div>
   );
