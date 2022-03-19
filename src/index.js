@@ -13,15 +13,16 @@ import reportWebVitals from './reportWebVitals';
  */
 
 // import PrimerComponente from "./App";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 
+import App from "./App"
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* //* Para usar un componente debo tratarlo como si fuera una etiqueta HTML */}
     {/* <PrimerComponente /> */}
-    <Home/>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
