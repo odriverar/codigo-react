@@ -6,6 +6,7 @@
  */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home"
+import Flags from "../pages/Flags";
 
 // ? Nuestro Router va a ser un componente el cual se encarga de retornar las rutas con su respectiva vista.
 
@@ -15,6 +16,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/Flags" element={<Flags /> } />
             </Routes>
         </BrowserRouter>
     )
