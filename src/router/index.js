@@ -7,8 +7,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home"
 import Flags from "../pages/Flags";
+import FlagsDetail from "../pages/FlagsDetail";
 import Youtube from "../pages/Youtube";
 import YoutubeAdministrator from "../pages/YoutubeAdministrator";
+import MovieUpdate from "../pages/MovieUpdate";
+
 
 // ? Nuestro Router va a ser un componente el cual se encarga de retornar las rutas con su respectiva vista.
 
@@ -18,12 +21,17 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/Flags" element={<Flags /> } />
+                <Route path="/flags" element={<Flags />} />
+                <Route path="/Flags/Detalle/:pais" element={<FlagsDetail />} />
                 <Route path="/Youtube" element={<Youtube />} />
                 <Route path="/Youtube/Administrator" element={<YoutubeAdministrator />} />
+                <Route
+                    path="/Youtube/Administrator/editar/:id"
+                    element={<MovieUpdate />}
+                />
             </Routes>
         </BrowserRouter>
-    )
-}
+    );
+};
 
 export default Router;

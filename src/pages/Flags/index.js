@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardMedia, Container, Grid, TextField, FormControl, InputLabel, Select, MenuItem, CircularProgress } from "@mui/material"
 import { getDataFromPokemon } from "../../service";
 
@@ -73,7 +74,10 @@ const Flags = () => {
                     countries.length > 0 ? countries.map(country => (
                         <Grid item md={3} xs={12}>
                             <Card>
-                                <CardMedia component="img" height={150} image={country.flags.svg} />
+                                {/* <Link to={`/Youtube/Administrator/editar/${movie.id}`}> */}
+                                <Link to={`/Flags/Detalle/${country.name.common}`}>
+                                    <CardMedia component="img" height={150} image={country.flags.svg}/>
+                                </Link>
                                 <CardContent>
                                     <h4>{country.name.official}</h4>
                                     <p>Population: {country.population}</p>
