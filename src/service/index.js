@@ -1,7 +1,7 @@
 // * Archivo donde almacenaremos las peticiones.
 // ? Una buena practica es tener la URL del API en una Variable.
 
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=200";
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=700";
 
 // Podemos crear una funcion generica la cual se encargue de hacer una peticion
 

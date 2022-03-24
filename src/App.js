@@ -1,11 +1,14 @@
 import Router from "./router";
+import { UserProvider } from "./Context/UserContext";
 
 const App = () => {
     return (
-        <div>
-            <Router></Router>
-        </div>
-    )
-}
+        <UserProvider>
+            <div>
+                <Router></Router>
+            </div>
+        </UserProvider>
+    );
+};
 
 export default App

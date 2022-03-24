@@ -42,7 +42,7 @@ const FlagsDetail = () => {
         //     capital: response[0].capital,
         //     toplevel: response[0].tld,
         // });
-        setCountries(response[0]);
+        setCountries({response});
 
         setCountry({
             flags: response[0].flags,
@@ -55,7 +55,7 @@ const FlagsDetail = () => {
             monedas: response[0].currencies[0],
         })
         
-        console.log(countries.currencies[0]);
+        console.log(countries[0]);
     }
 
     useEffect(() => {
@@ -69,7 +69,7 @@ const FlagsDetail = () => {
                     <img
                         width={600}
                         src={
-                            country.flags.svg
+                             country.flags.svg
                         }
                         alt=""
                     />
