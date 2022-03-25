@@ -7,15 +7,30 @@ export const UserContext = createContext();
 export const UserProvider = (props) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
+  const [basket, setBasket] = useState(JSON.parse(localStorage.getItem("basket")) ?? []);
+
   const storeUser = (dataUser) => {
     localStorage.setItem("user", JSON.stringify(dataUser));
     setUser(dataUser);
   };
 
-  const [pedidos, setPedidos] = useState(["pedido1", "pedido2"]);
+  // Vamos  aguardar el objeto de cada producto.
+  const storeBasket = (product) => {
+    // Basket, sera un array de objetos
+    setBasket([...basket, product]);
+    localStorage.setItem("basket", JSON.stringify([...basket, product]));
+  }
+
+  const deleteElementFromBasket = (id) => {
+    const productIndice = basket.findIndex((bas) => bas.id === id);
+    const newBasket = basket.splice(productIndice, 1);
+
+    setBasket(newBasket);
+    localStorage.setItem("Basket", JSON.stringify(newBasket));
+  }
 
   return (
-    <UserContext.Provider value={{ user, storeUser, pedidos, setPedidos }}>
+    <UserContext.Provider value={{ user, storeUser, basket, storeBasket }}>
       {props.children}
     </UserContext.Provider>
   );
