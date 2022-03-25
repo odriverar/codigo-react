@@ -45,11 +45,11 @@
          {/* ROUTE DEL ADMIN (PRIVADAS) */}
          <Route element={<Private />}>
            <Route
-             path="/youtube/administrador"
+             path="/youtube/administrator"
              element={<YoutubeAdministrator />}
            />
            <Route
-             path="/youtube/administrador/editar/:id"
+             path="/youtube/administrator/editar/:id"
              element={<MovieUpdate />}
            />
          </Route>
