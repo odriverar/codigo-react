@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Badge, Grid, TextField } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import ShoppingBasketRoundedIcon from '@mui/icons-material/ShoppingBasketRounded';
 import SearchIcon from '@mui/icons-material/Search';
 import logo from "../../assets/logo.svg"
@@ -32,7 +32,7 @@ const Ecommerce = () => {
                                 <a href="/">Wish List</a>
                             </li>
                             <li className="li-basket">
-                                <a href="/">Basket &nbsp; <Badge badgeContent={basket ? basket.length : 0} color="primary"><ShoppingBasketRoundedIcon /></Badge> </a>
+                                <Link to="/ecommerce/basket">Basket &nbsp; <Badge badgeContent={basket.length} showZero color="primary"><ShoppingBasketRoundedIcon /></Badge> </Link>
                             </li>
                         </ul>
                     </Grid>

@@ -3,16 +3,40 @@ import { Container, Grid, Button } from "@mui/material";
 import "./index.css"
 import { getProductClothes } from "../../service/firestore"
 import { UserContext } from "../../Context/UserContext";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
 const PopularWeek = () => {
-    const { storeBasket } = useContext(UserContext);
+    const { basket, storeBasket, deleteElementFromBasket } = useContext(UserContext);
 
     const [clothes, setClothes] = useState([]);
 
     const fetchClothes = async () => {
         const data = await getProductClothes();
         setClothes(data)
+    }
+
+    // * Vamos a crear un componente que reciba el ID del producto y verifique si este existe en Basket
+    /**
+     *  * props es un objeto
+     *  * clothe es un elemento del objeto
+     *  * props.clothe
+     *  ? Que dice destructuracion:
+     *  ! { clothe } = props
+     * 
+     */
+    const ButtonForProduct = ({ clothe }) => {
+        const findProduct = basket.find((bas) => bas.id === clothe.id);
+
+        return (
+            <>
+                {findProduct ? (
+                    <Button color="error" onClick={() => deleteElementFromBasket (clothe.id)} ><DeleteForeverIcon /></Button>
+                ) : (
+                    <Button onClick={() => storeBasket(clothe)} className="button-basket">+ Add to Basket</Button>
+                )}
+            </>
+        )
     }
 
     useEffect(() => {
@@ -33,7 +57,7 @@ const PopularWeek = () => {
                             <p className="container-buttons"> 
                                 <span className="price">$ {clothe.price_sale}</span>
                                 <span className="price-tacched">$ {clothe.price}</span>
-                                <Button onClick={() => storeBasket(clothe)} className="button-basket">+ Add to Basket</Button>
+                                <ButtonForProduct clothe = { clothe } />
                             </p>
                         </div>
                     </Grid>

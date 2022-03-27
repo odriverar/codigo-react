@@ -17,20 +17,42 @@ export const UserProvider = (props) => {
   // Vamos  aguardar el objeto de cada producto.
   const storeBasket = (product) => {
     // Basket, sera un array de objetos
+    // Vamos a darle la propiedad quantity a lo que es product
+    product.quantity = 1;
     setBasket([...basket, product]);
     localStorage.setItem("basket", JSON.stringify([...basket, product]));
   }
 
   const deleteElementFromBasket = (id) => {
-    const productIndice = basket.findIndex((bas) => bas.id === id);
-    const newBasket = basket.splice(productIndice, 1);
-
-    setBasket(newBasket);
-    localStorage.setItem("Basket", JSON.stringify(newBasket));
+    const products = basket.filter((bas) => bas.id !== id);
+    setBasket(products);
+    localStorage.setItem("basket", JSON.stringify(products));
   }
 
+  const addOrRemoveProduct = (id, add) => {
+    // EL id nos servira para poder encontrar el producto
+    // add es bool por si add es true suma sino resta
+    const products = basket.map((product) => {
+      if (product.id === id) {
+        if (add) {
+          product.quantity += 1;
+        } else {
+          if (product.quantity > 1) {
+            product.quantity -= 1;
+          }
+        }
+      }
+      // por ende despues del if el elemento quantity ha sido alterado
+      return {
+        ...product,
+      };
+    });
+    setBasket(products);
+    localStorage.setItem("basket", JSON.stringify(products));
+  };
+
   return (
-    <UserContext.Provider value={{ user, storeUser, basket, storeBasket }}>
+    <UserContext.Provider value={{ user, storeUser, basket, storeBasket, deleteElementFromBasket, addOrRemoveProduct }}>
       {props.children}
     </UserContext.Provider>
   );
