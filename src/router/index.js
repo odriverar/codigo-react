@@ -8,6 +8,7 @@
  */
  import { BrowserRouter, Routes, Route } from "react-router-dom";
  import Home from "../pages/Home";
+ import Pokemon from "../pages/Pokemon";
  import Flags from "../pages/Flags";
  import Detail from "../pages/Detail";
  import Youtube from "../pages/Youtube";
@@ -16,6 +17,10 @@
  import Login from "../pages/Login";
  import PopularWeek from "../pages/PopularWeek";
  import BasketView from "../pages/BasketView";
+ import CreateProduct from "../pages/CreateProduct";
+ import PopularWeekAdministrator from "../pages/PopularWeekAdministrator";
+ import Profile from "../pages/Profile";
+
  // Layout
  import Main from "../layouts/Main";
  import Private from "../layouts/Private";
@@ -33,11 +38,10 @@
          <Route path="login" element={<Login />} />
          <Route element={<Main />}>
            {/* <Route element={<Ecommerce />}> */}
-
-           <Route path="/" element={<Home />} />
            <Route path="/flags" element={<Flags />} />
            <Route path="/flag/detail/:name" element={<Detail />} />
            <Route path="/youtube" element={<Youtube />} />
+           <Route path="/pokemon" element={<Pokemon />} />
          </Route>
          {/* ROUTE para ecommerce */}
         <Route element={<Ecommerce />}>
@@ -54,6 +58,11 @@
              path="/youtube/administrator/editar/:id"
              element={<MovieUpdate />}
            />
+           {/* <Route path="/ecommerce/create" element={<CreateProduct/>} /> */}
+           <Route path="/ecommerce/create" element={<CreateProduct />} />
+           <Route path="/perfil" element={<Profile />} />
+           <Route path="/ecommerce/administrator" element={<PopularWeekAdministrator />} />
+           <Route path="/Home" element={<Home />} />
          </Route>
        </Routes>
      </BrowserRouter>

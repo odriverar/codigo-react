@@ -3,8 +3,10 @@ import { useContext, useState } from "react";
 import { Button, Grid, Card, CardContent, TextField } from "@mui/material";
 import bgLogin from "../../assets/bg-login.png";
 import { UserContext } from "../../Context/UserContext";
+import { storeUser as storeUserFirebase, loginUser } from "../../service/firestore";
+
 import swal from "sweetalert";
-import { Navigate } from "react-router-dom";
+
 
 const Login = () => {
   const { storeUser } = useContext(UserContext);
@@ -23,28 +25,57 @@ const Login = () => {
     });
   };
 
-  const handleClickLogin = () => {
-    if (userData.email === "pepe@gmail.com" && userData.password === "123456") {
-      const user = {
-        nombre: "Pepe",
-        apellido: "Zapata",
-        correo: userData.email,
-        edad: 21,
-        trabajo: "Software Developer",
-        dni: "12345678",
-        cel: "999999",
-      };
-      storeUser(user);
-
-      window.location.href = "/youtube/administrador";
-    } else {
-      swal({
-        icon: "error",
-        title: "Error",
-        text: "Email or Password incorrect",
-      });
+  const handleClickLogin = async () => {
+    /**
+     * * Primero vamos hacer login con el usuario
+     */
+    const { email, password } = userData;
+    let response = await loginUser(email, password);
+    
+    if (!response.ok) {
+      response = await storeUserFirebase(email, password);
+      console.log(response);
+      if (!response.ok) {
+        swal({
+          title: "Error",
+          text: response.data,
+          icon: "error",
+        });
+        return;
+      }
     }
-  };
+
+    storeUser(response.data.user);
+    window.location.href = "/youtube/administrator";
+    // const userFromFirebase = storeUserFirebase(userData.email, userData.password);
+    // storeUser(userFromFirebase);
+
+  }
+
+  // const handleClickLogin = () => {
+  //   if (userData.email === "pepe@gmail.com" && userData.password === "123456") {
+  //     const user = {
+  //       nombre: "Pepe",
+  //       apellido: "Zapata",
+  //       correo: userData.email,
+  //       edad: 21,
+  //       trabajo: "Software Developer",
+  //       dni: "12345678",
+  //       cel: "999999",
+  //     };
+  //     storeUser(user);
+
+  //     storeUserFirebase(userData.email, userData.password);
+  //     // window.location.href = "/youtube/administrador";
+
+  //   } else {
+  //     swal({
+  //       icon: "error",
+  //       title: "Error",
+  //       text: "Email or Password incorrect",
+  //     });
+  //   }
+  // };
 
   return (
     <Grid

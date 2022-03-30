@@ -8,7 +8,7 @@ import PokemonDetail from "../../components/PokemonDetail"
  *  * Vamos a ver como ejecutar la funcion que se encarga de traer los pokemones
  */
 
-const Home = () => {
+const Pokemon = () => {
   const imgUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/";
   // Vamos a crear una variable el que se encargara de guardar la lisa de pokemones
   const [pokemons, setPokemons] = useState([]);
@@ -72,4 +72,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Pokemon;
