@@ -20,6 +20,8 @@
  import CreateProduct from "../pages/CreateProduct";
  import PopularWeekAdministrator from "../pages/PopularWeekAdministrator";
  import Profile from "../pages/Profile";
+ import Map from "../pages/Map";
+ import SignUp from "../pages/SignUp";
 
  // Layout
  import Main from "../layouts/Main";
@@ -36,12 +38,15 @@
        <Routes>
          {/* ROUTE DEL MAIN (PUBLICAS) */}
          <Route path="login" element={<Login />} />
+         <Route path="/SignUp" element={<SignUp />} />
          <Route element={<Main />}>
+           <Route path="/" element={<Pokemon />} />
            {/* <Route element={<Ecommerce />}> */}
            <Route path="/flags" element={<Flags />} />
            <Route path="/flag/detail/:name" element={<Detail />} />
            <Route path="/youtube" element={<Youtube />} />
            <Route path="/pokemon" element={<Pokemon />} />
+           <Route path="/Map" element={<Map />} />
          </Route>
          {/* ROUTE para ecommerce */}
         <Route element={<Ecommerce />}>
