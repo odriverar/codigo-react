@@ -13,7 +13,7 @@ jobs:
       uses: action/checkout@v3.0.0
     # despues de clonar nuestro proyecto vamos a usar el action de cypress para poder ejecutar los test.
     - name: Cypress.io
-      uses: cypress-io/github-actions@v2.9.7
+      uses: cypress-io/github-action@v2.9.7
     # Luego de indicar que usaremos cypress vamos a decir que ejecute el comando npm start
       with:
         start: npm start
