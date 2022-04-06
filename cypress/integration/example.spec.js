@@ -14,7 +14,7 @@ describe("Mi primera prueba con cypress", () => {
     // Dentro de nuestro arrow function, vamos a escribir las pruebas que realizaremos: ejemplo:
     it("prueba home", () => {
         // ? Aqui vamos a verificar si es que nuestro home funciona o no.
-        cy.visit("http://localhost:3000");
+        cy.visit("https://codigo-react.vercel.app/");
         // QUe busque la palabra pokedesk
         cy.contains("Pokedex");
         // Ahora vamos a buscar el boton que diga detalle del pokemon
@@ -25,7 +25,7 @@ describe("Mi primera prueba con cypress", () => {
     });
     // Vamos a crear otra prueba para banderas
     it("Prueba flags", () => {
-        cy.visit("http://localhost:3000/flags");
+        cy.visit("https://codigo-react.vercel.app/flags");
         // Vamos a ver vcomo escribit en un inpiut
 
         cy.wait(5000).then(() => {
@@ -35,11 +35,11 @@ describe("Mi primera prueba con cypress", () => {
         });
     });
     it("Prueba de youtube", () => {
-        cy.visit("http://localhost:3000/youtube");
+        cy.visit("https://codigo-react.vercel.app/youtube");
         cy.contains("Doctor Strange");
     });
     it("Prueba de login", () => {
-        cy.visit("http://localhost:3000/Login");
+        cy.visit("https://codigo-react.vercel.app/Login");
         //Ahora vamos a ver de que otra manera podemos acceder a los inputs.
         cy.get('[name="email"]').type("pepe@gmail.com");
         cy.get('[name="password"]').type("123456");
